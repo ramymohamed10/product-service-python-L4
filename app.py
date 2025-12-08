@@ -25,16 +25,86 @@ CONTAINER_NAME = "product-images"
 def seed_data():
     if collection.count_documents({}) == 0:
         initial_products = [
-            {"id": 1, "name": "UltraSlim X1 Laptop", "price": 1299.99, "description": "Experience peak performance...", "category": "Computers & Tablets", "brand": "Apex"},
-            {"id": 2, "name": "NoiseGuard Pro Headphones", "price": 349.99, "description": "Immerse yourself...", "category": "Audio", "brand": "Aura"},
-            {"id": 3, "name": "Visionary 4K Monitor", "price": 499.99, "description": "See every detail...", "category": "Computer Accessories", "brand": "OptiMax"},
-            {"id": 4, "name": "GamerZ Console 5", "price": 499.99, "description": "Next-gen gaming...", "category": "Video Games", "brand": "Nexus"},
-            {"id": 5, "name": "SmartWatch Series 7", "price": 399.99, "description": "Track your fitness...", "category": "Wearable Technology", "brand": "Vital"},
-            {"id": 6, "name": "BlueBeat Portable Speaker", "price": 129.99, "description": "Take the party anywhere...", "category": "Audio", "brand": "Roam"},
-            {"id": 7, "name": "ProTab Air Tablet", "price": 599.99, "description": "Power and portability...", "category": "Computers & Tablets", "brand": "Forge"},
-            {"id": 8, "name": "MechKey RGB Keyboard", "price": 149.99, "description": "Dominate the competition...", "category": "Computer Accessories", "brand": "Zenith"},
-            {"id": 9, "name": "CineView 65\" OLED TV", "price": 1999.99, "description": "Experience true blacks...", "category": "TV & Home Theater", "brand": "Luminos"},
-            {"id": 10, "name": "Bolt External SSD 1TB", "price": 159.99, "description": "Transfer files in seconds...", "category": "Computer Accessories", "brand": "Velocity"}
+            {
+                "id": 1, 
+                "name": "UltraSlim X1 Laptop", 
+                "price": 1299.99, 
+                "description": "Experience peak performance in a featherlight package. The UltraSlim X1 features the latest i7 processor, 16GB RAM, and a stunning 14-inch 4K InfinityEdge display. With 12 hours of battery life and a carbon fiber chassis, it's built for professionals on the go.", 
+                "category": "Computers & Tablets", 
+                "brand": "Apex"
+            },
+            {
+                "id": 2, 
+                "name": "NoiseGuard Pro Headphones", 
+                "price": 349.99, 
+                "description": "Immerse yourself in silence with industry-leading Active Noise Cancellation. These over-ear headphones offer 30 hours of playtime, plush memory foam earcups for all-day comfort, and transparency mode to hear the world when you need to.", 
+                "category": "Audio", 
+                "brand": "Aura"
+            },
+            {
+                "id": 3, 
+                "name": "Visionary 4K Monitor", 
+                "price": 499.99, 
+                "description": "See every detail with the OptiMax 27-inch IPS panel. Boasting 99% sRGB color accuracy, HDR10 support, and a virtually borderless design, this monitor is perfect for content creators and multitaskers alike. Includes USB-C connectivity.", 
+                "category": "Computer Accessories", 
+                "brand": "OptiMax"
+            },
+            {
+                "id": 4, 
+                "name": "GamerZ Console 5", 
+                "price": 499.99, 
+                "description": "Next-gen gaming is here. The Console 5 delivers lightning-fast load times with its custom SSD, ray-tracing support for realistic lighting, and up to 120fps gameplay on supported titles. Includes one wireless haptic controller.", 
+                "category": "Video Games", 
+                "brand": "Nexus"
+            },
+            {
+                "id": 5, 
+                "name": "SmartWatch Series 7", 
+                "price": 399.99, 
+                "description": "Track your fitness, monitor your heart rate, and take calls from your wrist. The Series 7 features an always-on Retina display, ECG app, and water resistance up to 50 meters. The perfect companion for a healthy lifestyle.", 
+                "category": "Wearable Technology", 
+                "brand": "Vital"
+            },
+            {
+                "id": 6, 
+                "name": "BlueBeat Portable Speaker", 
+                "price": 129.99, 
+                "description": "Take the party anywhere with 360-degree sound and deep bass. The BlueBeat is IPX7 waterproof, making it pool-party proof. Features 15 hours of battery life and allows you to pair two speakers for stereo sound.", 
+                "category": "Audio", 
+                "brand": "Roam"
+            },
+            {
+                "id": 7, 
+                "name": "ProTab Air Tablet", 
+                "price": 599.99, 
+                "description": "Power and portability combined. The ProTab Air features a 10.9-inch Liquid Retina display and the blazing fast M1 chip, making it powerful enough for video editing yet light enough to hold in one hand. Supports the 2nd Gen Stylus.", 
+                "category": "Computers & Tablets", 
+                "brand": "Forge"
+            },
+            {
+                "id": 8, 
+                "name": "MechKey RGB Keyboard", 
+                "price": 149.99, 
+                "description": "Dominate the competition with ultra-responsive mechanical red switches. The MechKey features per-key RGB lighting fully customizable via software, a durable aluminum top plate, and a detachable wrist rest for ergonomic comfort.", 
+                "category": "Computer Accessories", 
+                "brand": "Zenith"
+            },
+            {
+                "id": 9, 
+                "name": "CineView 65\" OLED TV", 
+                "price": 1999.99, 
+                "description": "Experience true blacks and infinite contrast. The CineView OLED features 4K resolution, Dolby Vision IQ, and Dolby Atmos sound for a cinematic home theater experience. Smart features include built-in voice assistants.", 
+                "category": "TV & Home Theater", 
+                "brand": "Luminos"
+            },
+            {
+                "id": 10, 
+                "name": "Bolt External SSD 1TB", 
+                "price": 159.99, 
+                "description": "Transfer files in seconds with read speeds up to 1050MB/s. The Bolt SSD is shock-resistant, fits in the palm of your hand, and includes encryption software to keep your data safe. Compatible with PC, Mac, and consoles.", 
+                "category": "Computer Accessories", 
+                "brand": "Velocity"
+            }
         ]
         collection.insert_many(initial_products)
         print("Database seeded successfully.")
