@@ -18,7 +18,7 @@ db = client.productdb
 collection = db.products
 
 # Azure Blob Config
-BLOB_CONN_STR = os.getenv("BLOB_CONN_STR")
+BLOB_CONNECTION_STRING = os.getenv("BLOB_CONNECTION_STRING")
 CONTAINER_NAME = "product-images"
 
 # --- SEED DATA ---
@@ -167,7 +167,7 @@ def upload_image():
         return "File and productId required", 400
 
     try:
-        blob_service = BlobServiceClient.from_connection_string(BLOB_CONN_STR)
+        blob_service = BlobServiceClient.from_connection_string(BLOB_CONNECTION_STRING)
         container_client = blob_service.get_container_client(CONTAINER_NAME)
         
         if not container_client.exists():
@@ -194,7 +194,7 @@ def upload_image():
 @app.route('/<int:product_id>/image', methods=['GET'])
 def get_product_image(product_id):
     try:
-        blob_service = BlobServiceClient.from_connection_string(BLOB_CONN_STR)
+        blob_service = BlobServiceClient.from_connection_string(BLOB_CONNECTION_STRING)
         container_client = blob_service.get_container_client(CONTAINER_NAME)
 
         blobs = list(container_client.list_blobs(name_starts_with=f"{product_id}."))
