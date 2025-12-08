@@ -49,7 +49,7 @@ def health():
 
 @app.route('/', methods=['GET'])
 def get_products():
-    products = list(collection.find({}, {'_id': 0}))
+    products = list(collection.find({}, {'_id': 0}).sort('id', 1))
     return jsonify(products)
 
 @app.route('/<int:product_id>', methods=['GET'])
