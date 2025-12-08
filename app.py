@@ -22,6 +22,7 @@ BLOB_CONNECTION_STRING = os.getenv("BLOB_CONNECTION_STRING")
 CONTAINER_NAME = "product-images"
 
 # --- SEED DATA ---
+# Function to seed initial product data
 def seed_data():
     if collection.count_documents({}) == 0:
         initial_products = [
@@ -113,20 +114,24 @@ seed_data()
 
 # --- ROUTES ---
 
+# Health check endpoint
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({"status": "ok"})
 
+# Get all products
 @app.route('/', methods=['GET'])
 def get_products():
     products = list(collection.find({}, {'_id': 0}).sort('id', 1))
     return jsonify(products)
 
+# Get a single product by ID
 @app.route('/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     product = collection.find_one({"id": product_id}, {'_id': 0})
     return jsonify(product) if product else ("Product not found", 404)
 
+# Add a new product
 @app.route('/', methods=['POST'])
 def add_product():
     if not request.json:
@@ -139,6 +144,7 @@ def add_product():
     del new_product['_id']
     return jsonify(new_product)
 
+# Update a product
 @app.route('/', methods=['PUT'])
 def update_product():
     if not request.json or 'id' not in request.json:
@@ -151,13 +157,14 @@ def update_product():
     updated_product = collection.find_one({"id": target_id}, {'_id': 0})
     return jsonify(updated_product)
 
+# Delete a product
 @app.route('/<int:product_id>', methods=['DELETE'])
 def delete_product(product_id):
     result = collection.delete_one({"id": product_id})
     return ("", 200) if result.deleted_count > 0 else ("Product not found", 404)
 
 # --- IMAGE HANDLING ---
-
+# Uploads or updates a product image
 @app.route('/upload', methods=['POST'])
 def upload_image():
     file = request.files.get('file')
@@ -191,6 +198,7 @@ def upload_image():
         print(f"Upload Error: {e}")
         return "Upload failed", 500
 
+# Retrieves a product image
 @app.route('/<int:product_id>/image', methods=['GET'])
 def get_product_image(product_id):
     try:
